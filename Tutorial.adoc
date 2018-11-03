@@ -169,5 +169,53 @@ $ kubectl get deployments
 NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 kubernetes-bootcamp   1         1         1            1           3h
 $
+$ kubectl scale deployments/kubernetes-bootcamp --replicas=4
+deployment.extensions "kubernetes-bootcamp" scaled
+$ 
+$ 
+$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   4         4         4            4           3h 
+$ 
+$ kubectl get pods -o wide
+NAME                                   READY     STATUS    RESTARTS   AGE       IP         NODE
+kubernetes-bootcamp-5c69669756-29h4b   1/1       Running   0          52s       10.1.0.7   docker-for-desktop
+kubernetes-bootcamp-5c69669756-8rx97   1/1       Running   0          52s       10.1.0.5   docker-for-desktop
+kubernetes-bootcamp-5c69669756-q4lb9   1/1       Running   0          3h        10.1.0.4   docker-for-desktop
+kubernetes-bootcamp-5c69669756-qljxz   1/1       Running   0          52s       10.1.0.6   docker-for-desktop
+$ kubectl describe deployments/kubernetes-bootcamp
+Name:                   kubernetes-bootcamp
+Namespace:              default
+CreationTimestamp:      Sat, 03 Nov 2018 20:30:09 +0900
+Labels:                 run=kubernetes-bootcamp
+Annotations:            deployment.kubernetes.io/revision=1
+Selector:               run=kubernetes-bootcamp
+Replicas:               4 desired | 4 updated | 4 total | 4 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 1 max surge
+Pod Template:
+  Labels:  run=kubernetes-bootcamp
+  Containers:
+   kubernetes-bootcamp:
+    Image:        gcr.io/google-samples/kubernetes-bootcamp:v1
+    Port:         8080/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   kubernetes-bootcamp-5c69669756 (4/4 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  1m    deployment-controller  Scaled up replica set kubernetes-bootcamp-5c69669756 to 4
+$ 
+
 ----
 
