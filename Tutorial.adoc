@@ -119,3 +119,22 @@ Events:
   Normal  Started                16m   kubelet, docker-for-desktop  Started container
 $        
 ----
+
+[source,bash]
+----
+$ kubectl get pods
+NAME                                   READY     STATUS    RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-q4lb9   1/1       Running   0          2h
+$ kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2h
+$ 
+$ kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080
+service "kubernetes-bootcamp" exposed
+$ 
+$ kubectl get services
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          2h
+kubernetes-bootcamp   NodePort    10.106.152.60   <none>        8080:31746/TCP   12s
+$ 
+----
