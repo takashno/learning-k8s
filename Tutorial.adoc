@@ -57,3 +57,65 @@ $ curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/
 Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-q4lb9 | v=1
 $ 
 -----
+
+
+[source,bash]
+---- 
+$ kubectl get pods
+NAME                                   READY     STATUS    RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-q4lb9   1/1       Running   0          16m
+$ 
+----
+
+[source,bash]
+----
+$ kubectl describe pods
+Name:           kubernetes-bootcamp-5c69669756-q4lb9
+Namespace:      default
+Node:           docker-for-desktop/192.168.65.3
+Start Time:     Sat, 03 Nov 2018 20:30:09 +0900
+Labels:         pod-template-hash=1725225312
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Running
+IP:             10.1.0.4
+Controlled By:  ReplicaSet/kubernetes-bootcamp-5c69669756
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://075579a08c589eb8a38f72e586a8fde995a0ba590c73002886ca6a677de7585b
+    Image:          gcr.io/google-samples/kubernetes-bootcamp:v1
+    Image ID:       docker-pullable://gcr.io/google-samples/kubernetes-bootcamp@sha256:0d6b8ee63bb57c5f5b6156f446b3bc3b3c143d233037f3a2f00e279c8fcc64af
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sat, 03 Nov 2018 20:31:51 +0900
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-bv69w (ro)
+Conditions:
+  Type           Status
+  Initialized    True 
+  Ready          True 
+  PodScheduled   True 
+Volumes:
+  default-token-bv69w:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-bv69w
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From                         Message
+  ----    ------                 ----  ----                         -------
+  Normal  Scheduled              17m   default-scheduler            Successfully assigned kubernetes-bootcamp-5c69669756-q4lb9 to docker-for-desktop
+  Normal  SuccessfulMountVolume  17m   kubelet, docker-for-desktop  MountVolume.SetUp succeeded for volume "default-token-bv69w"
+  Normal  Pulling                17m   kubelet, docker-for-desktop  pulling image "gcr.io/google-samples/kubernetes-bootcamp:v1"
+  Normal  Pulled                 16m   kubelet, docker-for-desktop  Successfully pulled image "gcr.io/google-samples/kubernetes-bootcamp:v1"
+  Normal  Created                16m   kubelet, docker-for-desktop  Created container
+  Normal  Started                16m   kubelet, docker-for-desktop  Started container
+$        
+----
