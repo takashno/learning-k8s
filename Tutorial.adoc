@@ -48,6 +48,12 @@ $ curl http://localhost:8001/version
   "compiler": "gc",
   "platform": "linux/amd64"
 }
+$
+$ export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+$ echo Name of the Pod: $POD_NAME
+Name of the Pod: kubernetes-bootcamp-5c69669756-q4lb9
+$
+$ curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-q4lb9 | v=1
 $ 
-
 -----
