@@ -137,4 +137,22 @@ NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)         
 kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          2h
 kubernetes-bootcamp   NodePort    10.106.152.60   <none>        8080:31746/TCP   12s
 $ 
+$ kubectl describe services/kubernetes-bootcamp
+Name:                     kubernetes-bootcamp
+Namespace:                default
+Labels:                   run=kubernetes-bootcamp
+Annotations:              <none>
+Selector:                 run=kubernetes-bootcamp
+Type:                     NodePort
+IP:                       10.106.152.60
+LoadBalancer Ingress:     localhost
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  31746/TCP
+Endpoints:                10.1.0.4:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+$ 
+
 ----
