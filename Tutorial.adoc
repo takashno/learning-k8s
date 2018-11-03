@@ -154,5 +154,20 @@ Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
 $ 
-
+$ export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+$ echo NODE_PORT=$NODE_PORT
+NODE_PORT=31746
+$ curl localhost:$NODE_PORT
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-q4lb9 | v=1
+$ 
 ----
+
+アプリケーションのスケール
+[source,bash]
+----
+$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   1         1         1            1           3h
+$
+----
+
