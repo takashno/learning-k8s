@@ -36,7 +36,7 @@ Starting to serve on 127.0.0.1:8001
 
 [source,bash]
 -----
-NozomuMacMini:~ takashimanozomu$ curl http://localhost:8001/version
+$ curl http://localhost:8001/version
 {
   "major": "1",
   "minor": "10",
@@ -47,6 +47,7 @@ NozomuMacMini:~ takashimanozomu$ curl http://localhost:8001/version
   "goVersion": "go1.9.3",
   "compiler": "gc",
   "platform": "linux/amd64"
-}NozomuMacMini:~ takashimanozomu$ 
+}
+$ 
 
 -----
