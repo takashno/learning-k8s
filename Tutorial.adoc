@@ -634,6 +634,261 @@ $ kubectl get deployments
 NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 kubernetes-bootcamp   4         5         2            3           6h
 $ 
+$ kubectl get pods
+NAME                                   READY     STATUS         RESTARTS   AGE
+kubernetes-bootcamp-5f76cd7b94-28r2g   0/1       ErrImagePull   0          1m
+kubernetes-bootcamp-5f76cd7b94-g56lp   0/1       ErrImagePull   0          1m
+kubernetes-bootcamp-7799cbcb86-2jv5g   1/1       Running        0          27m
+kubernetes-bootcamp-7799cbcb86-d8q8z   1/1       Running        0          28m
+kubernetes-bootcamp-7799cbcb86-h7w46   1/1       Running        0          28m
+$ 
+$ kubectl describe pods
+Name:           kubernetes-bootcamp-5f76cd7b94-28r2g
+Namespace:      default
+Node:           docker-for-desktop/192.168.65.3
+Start Time:     Sun, 04 Nov 2018 02:35:33 +0900
+Labels:         pod-template-hash=1932783650
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Pending
+IP:             10.1.0.12
+Controlled By:  ReplicaSet/kubernetes-bootcamp-5f76cd7b94
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   
+    Image:          gcr.io/google-samples/kubernetes-bootcamp:v10
+    Image ID:       
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-bv69w (ro)
+Conditions:
+  Type           Status
+  Initialized    True 
+  Ready          False 
+  PodScheduled   True 
+Volumes:
+  default-token-bv69w:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-bv69w
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason                 Age                From                         Message
+  ----     ------                 ----               ----                         -------
+  Normal   Scheduled              12m                default-scheduler            Successfully assigned kubernetes-bootcamp-5f76cd7b94-28r2g to docker-for-desktop
+  Normal   SuccessfulMountVolume  12m                kubelet, docker-for-desktop  MountVolume.SetUp succeeded for volume "default-token-bv69w"
+  Normal   Pulling                10m (x4 over 12m)  kubelet, docker-for-desktop  pulling image "gcr.io/google-samples/kubernetes-bootcamp:v10"
+  Warning  Failed                 10m (x4 over 12m)  kubelet, docker-for-desktop  Failed to pull image "gcr.io/google-samples/kubernetes-bootcamp:v10": rpc error: code = Unknown desc = Error response from daemon: manifest for gcr.io/google-samples/kubernetes-bootcamp:v10 not found
+  Warning  Failed                 10m (x4 over 12m)  kubelet, docker-for-desktop  Error: ErrImagePull
+  Warning  Failed                 10m (x6 over 12m)  kubelet, docker-for-desktop  Error: ImagePullBackOff
+  Normal   BackOff                2m (x41 over 12m)  kubelet, docker-for-desktop  Back-off pulling image "gcr.io/google-samples/kubernetes-bootcamp:v10"
+
+
+Name:           kubernetes-bootcamp-5f76cd7b94-g56lp
+Namespace:      default
+Node:           docker-for-desktop/192.168.65.3
+Start Time:     Sun, 04 Nov 2018 02:35:33 +0900
+Labels:         pod-template-hash=1932783650
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Pending
+IP:             10.1.0.13
+Controlled By:  ReplicaSet/kubernetes-bootcamp-5f76cd7b94
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   
+    Image:          gcr.io/google-samples/kubernetes-bootcamp:v10
+    Image ID:       
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-bv69w (ro)
+Conditions:
+  Type           Status
+  Initialized    True 
+  Ready          False 
+  PodScheduled   True 
+Volumes:
+  default-token-bv69w:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-bv69w
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason                 Age                From                         Message
+  ----     ------                 ----               ----                         -------
+  Normal   Scheduled              12m                default-scheduler            Successfully assigned kubernetes-bootcamp-5f76cd7b94-g56lp to docker-for-desktop
+  Normal   SuccessfulMountVolume  12m                kubelet, docker-for-desktop  MountVolume.SetUp succeeded for volume "default-token-bv69w"
+  Normal   Pulling                10m (x4 over 12m)  kubelet, docker-for-desktop  pulling image "gcr.io/google-samples/kubernetes-bootcamp:v10"
+  Warning  Failed                 10m (x4 over 12m)  kubelet, docker-for-desktop  Failed to pull image "gcr.io/google-samples/kubernetes-bootcamp:v10": rpc error: code = Unknown desc = Error response from daemon: manifest for gcr.io/google-samples/kubernetes-bootcamp:v10 not found
+  Warning  Failed                 10m (x4 over 12m)  kubelet, docker-for-desktop  Error: ErrImagePull
+  Normal   BackOff                10m (x6 over 12m)  kubelet, docker-for-desktop  Back-off pulling image "gcr.io/google-samples/kubernetes-bootcamp:v10"
+  Warning  Failed                 2m (x41 over 12m)  kubelet, docker-for-desktop  Error: ImagePullBackOff
+
+
+Name:           kubernetes-bootcamp-7799cbcb86-2jv5g
+Namespace:      default
+Node:           docker-for-desktop/192.168.65.3
+Start Time:     Sun, 04 Nov 2018 02:08:50 +0900
+Labels:         pod-template-hash=3355767642
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Running
+IP:             10.1.0.10
+Controlled By:  ReplicaSet/kubernetes-bootcamp-7799cbcb86
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://b43739dbecdc9843f4a6dbafc2a2bfe5af4f13522df703b25194dd46b99bc772
+    Image:          jocatalin/kubernetes-bootcamp:v2
+    Image ID:       docker-pullable://jocatalin/kubernetes-bootcamp@sha256:fb1a3ced00cecfc1f83f18ab5cd14199e30adc1b49aa4244f5d65ad3f5feb2a5
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sun, 04 Nov 2018 02:08:51 +0900
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-bv69w (ro)
+Conditions:
+  Type           Status
+  Initialized    True 
+  Ready          True 
+  PodScheduled   True 
+Volumes:
+  default-token-bv69w:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-bv69w
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From                         Message
+  ----    ------                 ----  ----                         -------
+  Normal  Scheduled              38m   default-scheduler            Successfully assigned kubernetes-bootcamp-7799cbcb86-2jv5g to docker-for-desktop
+  Normal  SuccessfulMountVolume  38m   kubelet, docker-for-desktop  MountVolume.SetUp succeeded for volume "default-token-bv69w"
+  Normal  Pulled                 38m   kubelet, docker-for-desktop  Container image "jocatalin/kubernetes-bootcamp:v2" already present on machine
+  Normal  Created                38m   kubelet, docker-for-desktop  Created container
+  Normal  Started                38m   kubelet, docker-for-desktop  Started container
+
+
+Name:           kubernetes-bootcamp-7799cbcb86-d8q8z
+Namespace:      default
+Node:           docker-for-desktop/192.168.65.3
+Start Time:     Sun, 04 Nov 2018 02:08:44 +0900
+Labels:         pod-template-hash=3355767642
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Running
+IP:             10.1.0.8
+Controlled By:  ReplicaSet/kubernetes-bootcamp-7799cbcb86
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://e39e84499149ec59c2a3387609f1a578e9b94025655bab5addb1d02fe99bbcd6
+    Image:          jocatalin/kubernetes-bootcamp:v2
+    Image ID:       docker-pullable://jocatalin/kubernetes-bootcamp@sha256:fb1a3ced00cecfc1f83f18ab5cd14199e30adc1b49aa4244f5d65ad3f5feb2a5
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sun, 04 Nov 2018 02:08:49 +0900
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-bv69w (ro)
+Conditions:
+  Type           Status
+  Initialized    True 
+  Ready          True 
+  PodScheduled   True 
+Volumes:
+  default-token-bv69w:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-bv69w
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From                         Message
+  ----    ------                 ----  ----                         -------
+  Normal  Scheduled              39m   default-scheduler            Successfully assigned kubernetes-bootcamp-7799cbcb86-d8q8z to docker-for-desktop
+  Normal  SuccessfulMountVolume  39m   kubelet, docker-for-desktop  MountVolume.SetUp succeeded for volume "default-token-bv69w"
+  Normal  Pulling                38m   kubelet, docker-for-desktop  pulling image "jocatalin/kubernetes-bootcamp:v2"
+  Normal  Pulled                 38m   kubelet, docker-for-desktop  Successfully pulled image "jocatalin/kubernetes-bootcamp:v2"
+  Normal  Created                38m   kubelet, docker-for-desktop  Created container
+  Normal  Started                38m   kubelet, docker-for-desktop  Started container
+
+
+Name:           kubernetes-bootcamp-7799cbcb86-h7w46
+Namespace:      default
+Node:           docker-for-desktop/192.168.65.3
+Start Time:     Sun, 04 Nov 2018 02:08:44 +0900
+Labels:         pod-template-hash=3355767642
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Running
+IP:             10.1.0.9
+Controlled By:  ReplicaSet/kubernetes-bootcamp-7799cbcb86
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://911d6a67e7a88fbd2019760ff458a29139651adad0197b2e88f4222d6424d908
+    Image:          jocatalin/kubernetes-bootcamp:v2
+    Image ID:       docker-pullable://jocatalin/kubernetes-bootcamp@sha256:fb1a3ced00cecfc1f83f18ab5cd14199e30adc1b49aa4244f5d65ad3f5feb2a5
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sun, 04 Nov 2018 02:08:52 +0900
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-bv69w (ro)
+Conditions:
+  Type           Status
+  Initialized    True 
+  Ready          True 
+  PodScheduled   True 
+Volumes:
+  default-token-bv69w:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-bv69w
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From                         Message
+  ----    ------                 ----  ----                         -------
+  Normal  Scheduled              39m   default-scheduler            Successfully assigned kubernetes-bootcamp-7799cbcb86-h7w46 to docker-for-desktop
+  Normal  SuccessfulMountVolume  39m   kubelet, docker-for-desktop  MountVolume.SetUp succeeded for volume "default-token-bv69w"
+  Normal  Pulling                38m   kubelet, docker-for-desktop  pulling image "jocatalin/kubernetes-bootcamp:v2"
+  Normal  Pulled                 38m   kubelet, docker-for-desktop  Successfully pulled image "jocatalin/kubernetes-bootcamp:v2"
+  Normal  Created                38m   kubelet, docker-for-desktop  Created container
+  Normal  Started                38m   kubelet, docker-for-desktop  Started container
+$ 
+
 ----
 
 
