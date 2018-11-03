@@ -18,4 +18,12 @@ KubeDNS is running at https://localhost:6443/api/v1/namespaces/kube-system/servi
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 $ 
+$ kubectl get nodes
+NAME                 STATUS    ROLES     AGE       VERSION
+docker-for-desktop   Ready     master    36m       v1.10.3
+$ 
+$ kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080
+deployment.apps "kubernetes-bootcamp" created
+$
+
 ----
